@@ -1,0 +1,19 @@
+postgres:
+    image: postgres:9.3.5
+    environment:
+        - POSTGRES_PASSWORD=123456
+    ports:
+        - "5432"
+activemq:
+    image: kdomanski/activemq
+    ports:
+        - "61616"
+web:
+    image: mylnikovorg/ya-image
+    ports:
+        - "8000:8000"
+    links:
+        - postgres:postgres
+        - activemq:activemq
+#    volumes:
+#        - .:/home/my/app
