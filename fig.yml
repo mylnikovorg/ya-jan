@@ -12,11 +12,12 @@ activemq:
         - "8161"
 web:
     image: mylnikovorg/ya-image
-    command: mvn clean compile camelot-test:run
+#    command: cat yandexer.properties
+    command: mvn clean compile  camelot-test:run
 #    command: apt-get install -y telnet ; telnet localhost 5432 #cat /home/camelot-yandexer/yandexer.properties
     working_dir: /home/camelot-yandexer
     ports:
-        - "8080:8080"
+        - "0.0.0.0:8080:8080"
     links:
         - postgres:db
         - activemq:act
