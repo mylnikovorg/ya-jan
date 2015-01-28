@@ -5,9 +5,11 @@ postgres:
     ports:
         - "5432"
 activemq:
-    image: kdomanski/activemq
+    image: aterreno/activemq-dockerfile
     ports:
         - "61616"
+        - "61612"
+        - "8161"
 web:
     image: mylnikovorg/ya-image
     command: mvn clean compile camelot-test:run
