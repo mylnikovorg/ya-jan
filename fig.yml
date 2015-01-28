@@ -3,11 +3,11 @@ postgres:
     environment:
         - POSTGRES_PASSWORD=123456
     ports:
-        - "5432:5432"
+        - "5432"
 activemq:
     image: kdomanski/activemq
     ports:
-        - "61616:61616"
+        - "61616"
 web:
     image: mylnikovorg/ya-image
     command: mvn clean compile camelot-test:run
@@ -16,7 +16,7 @@ web:
     ports:
         - "8080:8080"
     links:
-        - postgres:postgres
-        - activemq:activemq
+        - postgres:db
+        - activemq:act
     volumes:
         - ./yandexer.properties:/home/camelot-yandexer/yandexer.properties
